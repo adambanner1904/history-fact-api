@@ -1,8 +1,33 @@
 {% extends "base.html" %}
-{% block title %}  The facts{% endblock%}
+{% block title %}  The facts {% endblock%}
 {% block content %}
-{% for key,value in form_data.items() %}
-    <h2> {{key}} </h2>
-    <p> {{value}} </p>
+{% for key,value in info.items() %}
+    <h1> Story {{key+1}} </h1>
+    {% for key, value in value.items() %}
+
+        {% if key == 'year' %}
+            <h3> {{key.capitalize()}} </h3>
+            <p> The year is {{value}} </p>
+        {% endif %}
+
+        {% if key == 'month' %}
+            <h3> {{key.capitalize()}} </h3>
+            <p> The month is the {{value}}th month </p>
+        {% endif %}
+
+        {% if key == 'day' %}
+            <h3> {{key.capitalize()}} </h3>
+            <p> The day is the {{value}}th of the month </p>
+        {% endif %}
+
+        {% if key == 'event' %}
+            <h3> What happened that day </h3>
+            <p> {{value}}</p>
+        {% endif %}
+
+
+
+
     {% endfor %}
+{% endfor %}
 {% endblock %}

@@ -16,9 +16,11 @@ def data():
         return f"The URL /data is accessed directly. Try going to '/form' to submit form"
     if request.method == "POST":
         form_data = request.form
-        for key, value in form_data:
+        info = get_info(**{'text': form_data['text'], 'year': form_data['year'],
+                           'month': form_data['month'], 'day': form_data['day']})
 
-        return render_template("data.html", form_data=form_data)
+
+        return render_template("data.html", form_data=form_data, info = info)
 
 
 if __name__ == "__main__":
